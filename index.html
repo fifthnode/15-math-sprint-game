@@ -1,90 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Sprint Game</title>
-    <!-- https://favicon.io/ -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
-    <!-- Style -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Sprint Game</title>
+  <!-- https://favicon.io/ -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
+  <!-- Style -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <!-- Header -->
-        <div class="header">
-            <h1>Math Sprint Game</h1>
-        </div>
-
-        <!-- Splash page -->
-        <div class="card" id="splash-page" hidden>
-            <form id="start-form">
-                <div class="selection-container">
-                    <!-- 10 questions radio input -->
-                    <div class="radio-container">
-                        <label for="value-10">10 Questions</label>
-                        <input type="radio" name="questions" value="10" id="value-10">
-                        <span class="best-score">
-                            <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
-                        </span>
-                    </div>
-                    <!-- 25 questions radio input -->
-                    <div class="radio-container">
-                        <label for="value-25">25 Questions</label>
-                        <input type="radio" name="questions" value="25" id="value-25">
-                        <span class="best-score">
-                            <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
-                        </span>
-                    </div>
-                    <!-- 50 questions radio input -->
-                    <div class="radio-container">
-                        <label for="value-50">50 Questions</label>
-                        <input type="radio" name="questions" value="50" id="value-50">
-                        <span class="best-score">
-                            <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
-                        </span>
-                    </div>
-                    <!-- 99 questions radio input -->
-                    <div class="radio-container">
-                        <label for="value-99">99 Questions</label>
-                        <input type="radio" name="questions" value="99" id="value-99">
-                        <span class="best-score">
-                            <span>Best Score</span>
-                            <span class="best-score-value">0.0s</span>
-                        </span>
-                    </div>
-                    <!-- Start button -->
-                    <div class="selection-footer">
-                        <button class="start" type="submit">Start Round</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Countdown page -->
-        <div class="card" id="countdown-page">
-            <h1 class="countdown">3</h1>
-        </div>
-
+  <div class="game-container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Math Sprint Game</h1>
     </div>
-    <!-- Script -->
-    <script src="script.js"></script>
+
+    <!-- Splash page -->
+    <div class="card" id="splash-page">
+      <form id="start-form">
+        <div class="selection-container">
+          <!-- 10 questions radio input -->
+          <div class="radio-container">
+            <label for="value-10">10 Questions</label>
+            <input type="radio" name="questions" value="10" id="value-10">
+            <span class="best-score">
+              <span>Best Score</span>
+              <span class="best-score-value">0.0s</span>
+            </span>
+          </div>
+          <!-- 25 questions radio input -->
+          <div class="radio-container">
+            <label for="value-25">25 Questions</label>
+            <input type="radio" name="questions" value="25" id="value-25">
+            <span class="best-score">
+              <span>Best Score</span>
+              <span class="best-score-value">0.0s</span>
+            </span>
+          </div>
+          <!-- 50 questions radio input -->
+          <div class="radio-container">
+            <label for="value-50">50 Questions</label>
+            <input type="radio" name="questions" value="50" id="value-50">
+            <span class="best-score">
+              <span>Best Score</span>
+              <span class="best-score-value">0.0s</span>
+            </span>
+          </div>
+          <!-- 99 questions radio input -->
+          <div class="radio-container">
+            <label for="value-99">99 Questions</label>
+            <input type="radio" name="questions" value="99" id="value-99">
+            <span class="best-score">
+              <span>Best Score</span>
+              <span class="best-score-value">0.0s</span>
+            </span>
+          </div>
+          <!-- Start button -->
+          <div class="selection-footer">
+            <button class="start" type="submit">Start Round</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Countdown page -->
+    <div class="card" id="countdown-page" hidden>
+        <h1 class="countdown">3</h1>
+    </div>
+
+    <!-- Game page -->
+    <div class="card" id="game-page" hidden>
+      <!-- Item container -->
+      <div class="item-container"></div>
+      <!-- Right/wrong buttons -->
+      <div class="item-footer">
+        <button class="wrong">Wrong</button>
+        <button class="right">Right</button>
+      </div>
+    </div>
+
+    <!-- Score page -->
+    <div class="card" id="score-page" hidden>
+      <!-- Score container -->
+      <div class="score-container">
+        <h1 class="title">Your Time</h1>
+        <h1 class="final-time">3.4s</h1>
+        <h1 class="base-time">Base Time: 2.4s</h1>
+        <h1 class="penalty-time">Penalty: +1.0s</h1>
+      </div>
+      <!-- Play Again Button -->
+      <div class="score-footer">
+        <button class="play-again">Play Again</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
 </html>
 <!-- 
 <p>Project Resource Reference:</p>
 <ul>
-    <li><a href="https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp">W3Schools – Hide Scrollbars</a></li>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Mozilla – Math.Random</a></li>
-    <li><a href="https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array">StackOverflow – How to Shuffle an Array</a></li>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll">Mozilla – Scroll</a></li>
-    <li><a href="https://www.w3schools.com/js/js_timing.asp">W3Schools – JS Timing Events</a></li>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed">Mozilla – Number.toFixed</a></li>
+  <li><a href="https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp">W3Schools – Hide Scrollbars</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Mozilla – Math.Random</a></li>
+  <li><a href="https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array">StackOverflow – How to Shuffle an Array</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll">Mozilla – Scroll</a></li>
+  <li><a href="https://www.w3schools.com/js/js_timing.asp">W3Schools – JS Timing Events</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed">Mozilla – Number.toFixed</a></li>
 </ul> 
 -->
