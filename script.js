@@ -121,9 +121,7 @@ function scoresToDOM() {
 
 // Stop the timer, process the results, go to the score page
 function checkTime() {
-  console.log(timePlayed);
   if (playerGuessArray.length == questionAmount) {
-    console.log('player guess array: ', playerGuessArray);
     clearInterval(timer);
     // Check for wrong guesses and add any penalty time
     equationsArray.forEach((equation, index) => {
@@ -135,7 +133,6 @@ function checkTime() {
       }
     });
     finalTime = timePlayed + penaltyTime;
-    console.log('time played: ', timePlayed, 'penalty: ', penaltyTime, 'final time: ', finalTime);
     scoresToDOM();
   }
 }
@@ -158,7 +155,6 @@ function startTimer() {
 
 // Scroll and store the user's selection in the playerGuessArray
 function select(guessedTrue) {
-  // console.log('player guess array: ', playerGuessArray);
   // Scroll 80 pixels
   valueY += 80;
   itemContainer.scroll(0, valueY);
@@ -181,10 +177,8 @@ function getRandomInt(max) {
 function createEquations() {
   // Randomly choose how many correct equations there should be
   const correctEquations = getRandomInt(questionAmount);
-  console.log('correct equations: ', correctEquations);
   // Set amount of wrong equations
   const wrongEquations = questionAmount - correctEquations;
-  console.log('wrong equations: ', wrongEquations);
   // Loop through, multiply random numbers up to 9, push to array
   for (let i = 0; i < correctEquations; i++) {
     firstNumber = getRandomInt(9);
@@ -237,7 +231,6 @@ function populateGamePage() {
   selectedItem.classList.add('selected-item');
   // Append
   itemContainer.append(topSpacer, selectedItem);
-
   // Create Equations, Build Elements in DOM
   createEquations();
   equationsToDOM();
@@ -262,24 +255,14 @@ function countdownStart() {
       countdown.textContent = count;
     }
   }, 1000);
-  // setTimeout(() => {
-  //   countdown.textContent = '2';
-  // }, 1000);
-  // setTimeout(() => {
-  //   countdown.textContent = '1';
-  // }, 2000);
-  // setTimeout(() => {
-  //   countdown.textContent = 'GO!';
-  // }, 3000);
 }
 
 // Navigate from splash page to countdown page
 function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
-  countdownStart();
   populateGamePage();
-  // setTimeout(showGamePage, 4000);
+  countdownStart();
 }
 
 // Get the value from our selected radio button
@@ -298,7 +281,6 @@ function getRadioValue() {
 function selectQuestionAmount(e) {
   e.preventDefault();
   questionAmount = getRadioValue();
-  console.log('question amount: ', questionAmount);
   if (questionAmount) {
     showCountdown();
   }
